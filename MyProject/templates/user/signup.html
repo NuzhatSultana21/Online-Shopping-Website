@@ -1,0 +1,81 @@
+{% extends 'base.html'%}
+{% block content %}
+<style>
+    .txt
+    {
+    height:50px;
+    margin-bottom:15px;
+    }
+
+    .txta
+    {
+    height:80px;
+    margin-bottom:15px;
+    }
+    .txti
+    {
+    height:50px;
+    margin-bottom:15px;
+    }
+
+
+</style>
+<div class="fs-2 text-center">Register<b class="text-ocolor">Here..
+    <i class="fa-solid fa-cart-shopping"></i>
+</b></div>
+
+<div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-10">
+        <div class="row">
+        <div class="col-sm-7">
+            <form method="post"enctype="multipart/form-data">
+            {% csrf_token %}
+                <div class="input-group mb-3">
+                <i class="input-group-text bg-bcolor text-white txti ps-3">
+                    <i class="fa-solid fa-user"></i>
+                </i>
+            <input type="text" class="form-control txt" name="name"
+                   required placeholder=" Enter Name..">
+                </div>
+                <div class="input-group mb-3">
+              <i class="input-group-text bg-bcolor text-white txti ps-3">
+                    <i class="fa-solid fa-envelope"></i>
+                </i>
+                <input type="email" class="form-control txt" name="email"
+                       required placeholder=" Enter Email..">
+                </div>
+                <div class="input-group mb-3">
+                  <i class="input-group-text bg-bcolor text-white txti ps-3">
+                    <i class="fa-solid fa-user"></i>
+                </i>
+                <input type="password" class="form-control txt" name="passwd"
+                       required placeholder=" Enter Password..">
+                </div>
+                <div class="input-group mb-3">
+                 <i class="input-group-text bg-bcolor text-white txti ps-3">
+                    <i class="fa-solid fa-phone"></i>
+                </i>
+                <input type="number" class="form-control txt" name="phone"
+                       required placeholder=" Enter Phone..">
+                </div>
+                <div class="input-group mb-3">
+                <input type="file" class="form-control txt" name="pic"  required >
+                </div>
+
+                <div class="input-group mb-3">
+                 <i class="input-group-text bg-bcolor text-white txti ps-3 txta">
+                    <i class="fa-solid fa-message"></i>
+                </i>
+                 <textarea class="form-control txta" name="address"
+                           required placeholder="Address.."></textarea>
+                </div>
+                <input type="submit" value="Register Now" class="btn bg-bcolor txt text-white">
+            </form>
+
+        </div>
+                   <div class="col-sm-5"></div>
+                   <div class="col-sm-1"></div>
+        </div>
+    </div>
+{% endblock %}

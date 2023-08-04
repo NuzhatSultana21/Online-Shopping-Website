@@ -1,0 +1,139 @@
+{% extends 'base.html'%}
+{% block content %}
+{% load static %}
+<script src="{% static 'js/jquery-3.6.1.min.js'%}"></script >
+<script>
+    $(document).ready(function(){
+    $("#btne").click(function(){
+    $(".uform").slideToggle(4000)
+    })
+    })
+
+</script>
+
+
+{% if not request.session.userid %}
+
+<script>
+    alert('you have login first....')
+    location.href="/user/sigin/"
+</script>
+{% endif %}
+<div class="fs-2 text-center">My<b class="text-ocolor"> Profile
+   <i class="fa-solid fa-cart-shopping"></i></i>
+</b></div>
+<div class="row">
+
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8">
+        <div class="row">
+             <!--start card-->
+    {% for x in mdata %}
+    <div class="card mb-3 w-100">
+  <div class="row g-0">
+    <div class="col-md-4 p-3">
+      <img src="/{{x.pic}}"
+           style="min-height:200px;" class="img-fluid rounded-start" alt="...">
+    </div>
+    <div class="col-md-8">
+
+      <div class="card-body">
+        <h5 class="card-title">{{x.name}}</h5>
+        <p class="card-text">
+            <b>Phone:</b> {{x.phone}}</br>
+            <b>Email:</b>{{x.email}}</br>
+            <b>Passwd:</b>{{x.passwd}}</br>
+            <b>Address:</b>{{x.address}}</br>
+            <a href="#" id="btne" class="btn bg-ocolor float-end">Edit Profile </a>
+
+        </p>
+        <p class="card-text"><small class="text-muted">Last updated few mins ago</small></p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endfor %}
+    <!--end card-->
+
+        </div>
+
+    </div>
+    <div class="col-sm-2"></div>
+</div>
+<!--form-->
+<style>
+    .txt
+    {
+    height:50px;
+    margin-bottom:15px;
+    }
+
+    .txta
+    {
+    height:80px;
+    margin-bottom:15px;
+    }
+    .uform
+    {
+    display:none;
+    }
+    .txti
+    {
+    height:50px;
+    margin-bottom:15px;
+    }
+
+</style>
+
+
+<div class="row">
+
+    <div class="col-sm-8 mx-auto uform">
+        <div class="row">
+        <div class="col-sm-7">
+            <form method="post"enctype="multipart/form-data">
+            {% csrf_token %}
+                <div class="input-group mb-3">
+                <i class="input-group-text bg-bcolor text-white txti ps-3">
+                    <i class="fa-solid fa-user"></i>
+                </i>
+            <input type="text" class="form-control txt" name="name"
+                   required placeholder=" Enter Name..">
+                </div>
+
+                <div class="input-group mb-3">
+                  <i class="input-group-text bg-bcolor text-white txti ps-3">
+                    <i class="fa-solid fa-user"></i>
+                </i>
+                <input type="password" class="form-control txt" name="passwd"
+                       required placeholder=" Enter Password..">
+                </div>
+                <div class="input-group mb-3">
+                 <i class="input-group-text bg-bcolor text-white txti ps-3">
+                    <i class="fa-solid fa-phone"></i>
+                </i>
+                <input type="number" class="form-control txt" name="phone"
+                       required placeholder=" Enter Phone..">
+                </div>
+                <div class="input-group mb-3">
+                <input type="file" class="form-control txt" name="pic"  required >
+                </div>
+
+                <div class="input-group mb-3">
+                 <i class="input-group-text bg-bcolor text-white txti ps-3 txta">
+                    <i class="fa-solid fa-message"></i>
+                </i>
+                 <textarea class="form-control txta" name="address"
+                           required placeholder="Address.."></textarea>
+                </div>
+                <input type="submit" value="Register Now" class="btn bg-bcolor txt text-white">
+            </form>
+
+        </div>
+                   <div class="col-sm-5"></div>
+
+        </div>
+    </div>
+
+<!--end form-->
+{% endblock %}

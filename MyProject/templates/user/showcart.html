@@ -1,0 +1,46 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block content %}
+{% if not request.session.userid %}
+<script>
+     alert('you have to login first.....')
+     location.href="/user/signin/"
+</script>
+{% endif %}
+<div class="fs-2 text-center">Your Item In<b class="text-ocolor"> Cart
+   <i class="fa-solid fa-cart-shopping"></i></i>
+</b></div>
+<table class="table table-striped"...>
+    <tr>
+
+     <th> Product Picture </th>
+     <th> price </th>
+     <th> After Discount </th>
+     <th> size </th>
+     <th> Color </th>
+     <th> product Delivery </th>
+        <th> added Date </th>
+        <th> Delete </th>
+        <th> Order </th>
+    </tr>
+    {% for i in cdata %}
+    <tr>
+
+         <td><img src="/{{i.7}}" style="max-height:150px;" class="img-thumbnail"></td>
+         <td class="text-danger fw-bold">{{i.1}}</td>
+         <td class="text-danger fw-bold">{{i.2}}</td>
+         <td><span class="btn bg-ocolor">{{1.4}}</span></td>
+         <td><div style="height:45px;width:45px;border-radius:3px;background:{{i.4}};"></div></td>
+         <td>{{i.6}}</td>
+
+         <td>{{i.15}}</td>
+        <td>
+            <a href="/user/showcart?msg={{i.11}}" class="btn btn-sm btn-danger"><i class="fa-solid fa-trash"></i></a>
+        </td>
+        <td> <a href="/user/showcart?cid={{i.11}}&pid={{i.13}}" class="btn btn-danger"> Order Now </a></td>
+
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}

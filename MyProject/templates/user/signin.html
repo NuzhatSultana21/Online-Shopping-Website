@@ -1,0 +1,21 @@
+{% extends 'base.html'%}
+{% block content %}
+<div class="fs-2 text-center">Login<b class="text-ocolor">Here..
+    <i class="fa-solid fa-cart-shopping"></i>
+</b></div>
+<div class="row">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4">
+     <form method="post">
+         {% csrf_token %}
+    <input type="email" class="form-control" required name="email"><br/>
+         <input type="password" class="form-control" required name="passwd"><br/>
+         <input type="submit" value="Login In" class="btn bg-bcolor txt text-white">
+
+
+</form>
+    </div>
+    <div class="col-sm-4"></div>
+</div>
+
+{% endblock %}

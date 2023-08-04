@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <title>
+        {% block title %}pr
+        {% endblock %}
+    </title>
+    <link href="{% static 'css/bootstrap.css'%}" rel="stylesheet"/>
+    <link href="{% static 'css/all.css'%}" rel="stylesheet"/>
+    <script src="{% static 'js/bootstrap.js'%}"></script>
+    <script src="{% static 'js/bootstrap.bundle.js'%}"></script>
+    <style>
+        .bg-bcolor
+        {
+        background:#2E2E2E;
+        }
+        .bg-ocolor
+        {
+        background:#43A047;
+        }
+        .text-ocolor
+        {
+        color:#43A047;
+        }
+        #menu ul li a
+        {
+        color:white;
+        }
+        .ufooter
+        {
+        min-height:300px;
+        border-bottom:1px solid white;
+        }
+        .bfooter
+        {
+        height:50px;
+        font-size:22px;
+        text-align:center;
+        line-height:50px;
+        color:white;
+        }
+        .bfooter a
+        {
+        text-decoration:none;
+        }
+        .bfooter a:hover
+        {
+        color:white;
+        }
+        .w
+        {
+        background:url("{% static 'images/banner-2.jpg'%}");
+        background-size:100% 100%;
+        min-height:220px;
+        padding-top:100px;
+        }
+         .m
+        {
+        background:url("{% static 'images/banner-1.jpg'%}");
+        background-size:100% 100%;
+        min-height:220px;
+        padding-top:100px;
+        }
+         .k
+        {
+        background:url("{% static 'images/banner-3.jpg'%}");
+        background-size:100% 100%;
+        min-height:220px;
+        padding-top:100px;
+        }
+        .btn1
+        {
+        background:#FF8800;
+        }
+        .product
+        {
+        min-height:500px;
+        }
+        .navAccessibility{
+        text-align:center;
+        color:white;
+        text-decoration:none;
+        font-size:20px;
+
+        }
+        .nav_first{
+        text-decoration:none;
+        color:white;
+        list-style-type:none;
+
+        }
+
+
+
+    </style>
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row bg-bcolor text-light text-center">
+        <div class="col-sm-4">
+            <i class="fa-solid fa-phone"></i>
+            +91,9452849549 | 8601591643
+        </div>
+        <div class="col-sm-4">
+            Welcome to Fav Cart India
+            <i class="fa-solid fa-cart-arrow-down"></i>
+        </div>
+        <div class="col-sm-4">
+            <i class="fa-brands fa-facebook"></i>
+            <i class="fa-brands fa-youtube"></i>
+            <i class="fa-brands fa-twitter"></i>
+            <i class="fa-brands fa-instagram"></i>
+        </div>
+    </div>
+    <div class="row header py-3 text-center">
+        <div class="col-sm-4 fs-2 text-center">
+            FavCart <b class="text-ocolor">India
+            <i class="fa-solid fa-cart-arrow-down"></i></b>
+        </div>
+        <div class="col-sm-4 pt-2">
+            <div class="input-group"><input type="text" class="form-control" placeholder="Search...">
+                <i class="input-group-text bg-ocolor text-light">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+
+                </i>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <a href="/user/showcart/" class="btn bg-ocolor">
+                Cart <i class="fa-solid fa-cart-arrow-down"></i>
+                <b class="badge bg-dark">
+                    {{cart}}
+                </b>
+            </a>
+            {% if request.session.userid %}
+            <b>{{request.session.userid }}</b>
+            <img src="{{ request.session.userpic}}"style="max-height:50px;" class="img-thumbnail"/>
+            {% else %}
+            <b>Guest User</b>
+            <img src="{% static 'profile/default.jpg'%}"style="max-height:50px;" class="img-thumbnail"/>
+            {% endif %}
+        </div>
+    </div>
+    <div class="row menu bg-bcolor" style="min-height:45px">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8">
+            <!-- start menu -->
+            <nav class="navbar navbar-expand-lg" id="menu">
+                <div class="container-fluid">
+
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="/user/index/">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/user/about/">About Us</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                   aria-expanded="false">
+                                    Product
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="/user/mens/">Men's</a></li>
+                                    <li><a class="dropdown-item" href="/user/womens/">Women's</a></li>
+                                    <li><a class="dropdown-item" href="/user/kids/">Kid's</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/user/myorder/">My Orders</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/user/enquiry">Enquiry</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="/user/signup/">Sign UP</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/user/profile/">My Profile</a>
+                            </li>
+                            {% if request.session.userid %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="/user/signout/">Signout</a>
+                            </li>
+                            {% else %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="/user/signin/">Sign In</a>
+                            </li>
+                            {% endif %}
+                        </ul>
+
+                    </div>
+                </div>
+            </nav>
+            <!-- end menu -->
+        </div>
+        <div class="col-sm-2"></div>
+    </div>
+
+
+    <div class="row product">
+        <div class="col-sm-12 py-3">
+    {% block content %}
+
+            {% endblock %}
+        </div>
+    </div>
+    <div class="row bigsale" style="min-height:350px;width:100%">
+        <h1 style="color:orange;text-align:center;font-size:50px">Big Sale</h1><hr style="height:5px;background:black">
+        <div class="col-sm-6">
+
+            <img style="height:300px;width:100%;margin:10px 10px;" src="{% static 'images/bigsale1.jpeg'%}"/></div>
+        <div class="col-sm-6 text-center" style="background:rgba(0,0,0,.6);">
+            <h3 style="color:orange;margin-top:20%;">50% Less in all Items</br>
+                CRAZY DISCOUNT </br>
+                UNLIMITED COLLECTION
+            </h3>
+        </div>
+
+    </div>
+    <div class="row message"><h1 style="text-align:center"> OUR SERVICES </h1>
+        <div class="col-sm-4 test-white border border-2 solid white fs-3"
+             style="text-align:center;padding-top:40px;">FREE DELIVERY</br>
+        <span class="fs-6">speed is often touted as the most important
+        factor in online delivery, but research suggests that aspects like
+            reliability,convenience, and cost are more valuable to today's consumers.
+        </span>
+        </div>
+       <div class="col-sm-4 test-white border border-2 solid white fs-3"
+             style="text-align:center;padding-top:40px;">DELIVERY ON TIME </br>
+        <span class="fs-6">If they have receipts turned on below the message you will
+            see the date and time,that they viewed the message.
+        </span>
+       </div>
+        <div class="col-sm-4 test-white border border-2 solid white fs-3"
+             style="text-align:center;padding-top:40px;">SECURE PAYMENT  </br>
+        <span class="fs-6">The OTP is six-digit number,sent to registered email address
+            and mobile number, after we ship the item.
+            you can also find the OTP by selecting Track package beside the order in your Orders.
+        </span>
+       </div>
+    </div >
+
+    <div class="row ufooter bg-bcolor border-1">
+        <div class="col-4 bg-dark">
+            <div class="navFooterLinkCol navAccessibility">
+          <div class="navFooterColHead">Get to Know Us</div>
+        <ul>
+            <li class="nav_first">
+              <a href="#" class="nav_a"> About Us </a>
+            </li>
+            <li >
+              <a href="#" class="nav_a">Careers</a>
+            </li>
+            <li >
+              <a href="#" class="nav_a">Press Releases</a>
+            </li>
+            <li >
+              <a href="#" class="nav_a">Favcart Carres</a>
+            </li>
+            <li >
+              <a href="#" class="nav_a">Gift a Smile</a>
+            </li>
+            <li class="nav_last ">
+              <a href="#" class="nav_a">Favcart Science</a>
+            </li>
+        </ul>
+            </div>
+
+
+        </div>
+        <div class="col-4 bg-dark">
+            <div class="navFooterLinkCol navAccessibility">
+          <div class="navFooterColHead">Connect with Us</div>
+        <ul>
+            <li class="nav_first">
+              <a href="#" class="nav_a">Facebook</a>
+            </li>
+            <li >
+              <a href="#" class="nav_a">Twitter</a>
+            </li>
+            <li >
+              <a href="#" class="nav_a">Instagram</a>
+            </li>
+            <li >
+              <a href="#">YouTube</a>
+            </li>
+            <li >
+              <a href="#" class="nav_a"> Telegram</a>
+            </li>
+        </ul>
+      </div>
+
+
+        </div>
+        <div class="col-4 bg-dark text-center ft">
+            <div class="navFooterLinkCol navAccessibility">
+          <div class="navFooterColHead"> Make Money with Us </div>
+        <ul>
+            <li class="nav_first">
+              <a href="#" class="nav_a"> <i> Sales on favcart </i> </a>
+            </li>
+            <li >
+                <a href="#" class="nav_a"> <i> Favcart Global selling </i> </a>
+            </li>
+            <li >
+              <a href="#" class="nav_a"> <i> Become an Affliate </i> </a>
+            </li>
+            <li >
+              <a href="#" class="nav_a"> <i> Advertise your products </i> </a>
+            </li>
+            <li >
+              <a href="#" class="nav_a"> <i> Gift a Smile </i> </a>
+            </li>
+        </ul>
+      </div>
+        </div>
+
+    </div>
+    <div class="row bfooter bg-bcolor">
+        <div class="col-sm-6">
+            Developed By : <a href="#" class="text-ocolor"> Nuzhat Sultana </a>
+        </div>
+        <div class="col-sm-6">
+            &copy; Copyright to : <a href="https://www.techpile.in" target="_blank" class="text-ocolor"> Sultana
+             Pvt. Ltd.</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>
